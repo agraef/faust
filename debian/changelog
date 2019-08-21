@@ -1,3 +1,9 @@
+faust (2.11.14+git20181113+10159-1) disco; urgency=low
+
+  * Last revision which compiles with LLVM 3.5.
+
+ -- Albert Graef <aggraef@gmail.com>  Thu, 22 Aug 2019 19:08:46 +0200
+
 faust (2.0.a34+git20150520+5963-1) trusty; urgency=low
 
   * Build from latest upstream source.

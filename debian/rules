@@ -1,13 +1,17 @@
 #!/usr/bin/make -f
 
+LLVM_CONFIG = $(shell test `which llvm-config-3.5 2>/dev/null` && echo llvm-config-3.5 || echo llvm-config)
+
 %:
 	dh $@
 
+override_dh_auto_clean:
+
 override_dh_auto_build:
-	dh_auto_build -- PREFIX=/usr world
+	dh_auto_build -- PREFIX=/usr world CMAKEOPT+=-DLLVM_CONFIG=$(LLVM_CONFIG)
 
 override_dh_auto_install:
-	dh_auto_install -- DESTDIR=$(CURDIR)/debian/faust PREFIX=/usr
+	dh_auto_install -- DESTDIR=$(CURDIR)/debian/faust+llvm35 PREFIX=/usr
 
 override_dh_compress:
 	dh_compress -X.h -X.cc -X.lib -X.dsp -X.pd -X.maxpat -X.mid -X.txt -XMakefile -XREADME
